@@ -1,0 +1,45 @@
+trigger:
+  branches:
+    include:
+    - develop
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      name: Linux-SAAS Agents
+    steps:
+    - task: NodeTool@0
+      displayName: 'Install NodeJS'
+      inputs:
+        versionSpec: '10.x'
+    - task: Npm@1
+      inputs:
+        command: 'install'
+    - task: Bash@3
+      displayName: 'build'
+      inputs:
+        targetType: 'inline'
+        script: |
+          npm run build
+    - task: CopyFiles@2
+      displayName: 'Copy Files'
+      inputs:
+        Contents: 'build/**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    - task: AzureWebApp@1
+      displayName: 'Deploy to App Service'
+      inputs:
+        azureSubscription: 'SubscriptionPlatform'
+        appType: 'webApp'
+        appName: '$(appServiceName)'
+        package: 'drop'
+        deploymentMethod: 'runFromPackage'
+      enabled: false
+

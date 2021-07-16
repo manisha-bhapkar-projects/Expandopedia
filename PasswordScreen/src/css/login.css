@@ -1,0 +1,329 @@
+body,
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	font-family: "poppinsregular";
+	height: 100%;
+	width: 100%;
+	/* background: url('../images/login-ng.png') no-repeat cover; */
+	background-image: url(../images/login-ng.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@font-face {
+	font-family: "poppinslight";
+	src: url("../fonts/poppins-light-webfont.woff2") format("woff2"),
+		url("../fonts/poppins-light-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "poppinsmedium";
+	src: url("../fonts/poppins-medium-webfont.woff2") format("woff2"),
+		url("../fonts/poppins-medium-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "poppinsregular";
+	src: url("../fonts/poppins-regular-webfont.woff2") format("woff2"),
+		url("../fonts/poppins-regular-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "poppinssemibold";
+	src: url("../fonts/poppins-semibold-webfont.woff2") format("woff2"),
+		url("../fonts/poppins-semibold-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.login-wrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background-color: rgba(4, 19, 33, 0.85);
+}
+
+.login-box {
+	width: 434px;
+	padding: 15px 50px;
+	background: linear-gradient(
+		113.72deg,
+		rgba(4, 19, 33, 0.6) -16.99%,
+		rgba(112, 128, 144, 0.15) 128.96%
+	);
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+	border-radius: 10px;
+}
+
+.login-box h3 {
+	color: #fff;
+	font-family: "poppinsregular";
+	font-size: 14px;
+	text-align: center;
+}
+
+.login-box h2 {
+	color: #001e37;
+	font-family: "poppinsmedium";
+	font-size: 20px;
+	margin: 15px 0px 0px 0px;
+}
+
+.floating {
+	margin-bottom: 2rem;
+	position: relative;
+	/*  background-color: var(--field__background);*/
+	transition: background-color 0.2s ease;
+	/*
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+*/
+}
+
+.floating:hover,
+.floating:focus-within {
+	/*  background-color: var(--field__background--hover);*/
+}
+
+.floating i {
+	position: absolute;
+	top: 17px;
+	right: 10px;
+	color: #fff;
+	font-size: 12px;
+}
+
+.floating__input {
+	padding: 5px 35px 5px 15px;
+	font-size: 1rem;
+	transition: border-color 0.2s ease;
+	border-radius: 6px;
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+	border: 1px solid rgba(251, 251, 251, 0.4);
+	background: transparent;
+	color: #fff;
+}
+
+.floating__input:focus {
+	outline: none;
+}
+
+.floating:hover .floating__input {
+	/*  border-color: var(--input__border--hover);*/
+}
+
+.floating__input::placeholder {
+	color: rgba(0, 0, 0, 0);
+}
+
+.floating__label {
+	display: block;
+	position: relative;
+	max-height: 0;
+	font-weight: 500;
+	pointer-events: none;
+}
+
+.floating__label::before {
+	font-family: "poppinsregular";
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 12px;
+	content: attr(data-content);
+	display: inline-block;
+	filter: blur(0);
+	backface-visibility: hidden;
+	transform-origin: left top;
+	transition: transform 0.2s ease;
+	left: 0.8rem;
+	position: relative;
+	top: 4px;
+}
+
+.floating__label::after {
+	bottom: 1rem;
+	content: "";
+	height: 0.1rem;
+	position: absolute;
+	transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+	opacity: 0;
+	left: 0;
+	top: 100%;
+	margin-top: -0.1rem;
+	transform: scale3d(0, 1, 1);
+	width: 100%;
+	/*  background-color: var(--color__accent);*/
+}
+
+.floating__input:focus + .floating__label::after {
+	transform: scale3d(1, 1, 1);
+	opacity: 1;
+}
+
+.floating__input:placeholder-shown + .floating__label::before {
+	transform: translate3d(0, -2.2rem, 0) scale3d(1, 1, 1);
+}
+
+.floating__label::before,
+.floating__input:focus + .floating__label::before {
+	transform: translate3d(0, -3.3rem, 0) scale3d(0.82, 0.82, 1);
+	background: transparent;
+	padding: 0 5px;
+}
+
+.floating__input:focus + .floating__label::before {
+	color: #fff;
+	background: #27333f;
+	font-family: "poppinsregular";
+	font-size: 14px;
+	text-transform: capitalize;
+	padding: 0px 10px;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+.hidden--visually {
+	border: 0;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.button {
+	background: var(--color__accent);
+	border-width: 0;
+	color: #fff;
+	display: block;
+	width: 100%;
+	padding: 1rem 2rem;
+	font-weight: 600;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.form {
+	margin: 30px 0px 0px 0px;
+}
+
+.info-wrap {
+	position: absolute;
+	font-size: 12px;
+	color: #708090;
+	right: 0px;
+	bottom: -20px;
+	font-family: "poppinslight";
+}
+
+.btn-login-disable {
+	background: #708090 0% 0% no-repeat padding-box;
+	box-shadow: 0px 3px 6px #00000029;
+	border-radius: 25px;
+	border: inherit;
+	width: 100%;
+	box-sizing: border-box;
+	opacity: 0.3;
+	height: 40px;
+}
+
+.btn-login-active {
+	border: inherit;
+	width: 100%;
+	box-sizing: border-box;
+	height: 40px;
+	background: #1189d6;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+	border-radius: 6px;
+	font-size: 15px;
+}
+
+.pw-set {
+	position: absolute;
+	right: 5px;
+	top: 13px;
+	background: #fff;
+	color: #708090;
+	font-size: 11px;
+	padding: 0px 25px 0px 0px;
+}
+
+.pw-set i {
+	position: absolute;
+	top: -2px;
+	font-size: 20px;
+	right: 0px;
+	color: #64b9ce;
+}
+.expando_logo {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	margin: auto;
+	right: 0px;
+	width: 224px;
+}
+.expando_logo img {
+	position: absolute;
+	left: 0px;
+	top: 55px;
+}
+
+.errormsg {
+	color: red;
+	font-size: 12px;
+	margin-left: 4px;
+	margin-top: 0 !important;
+}
+.eye-pw {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+}
+.confirm-act-wrap h3 {
+	position: relative;
+	padding: 0px 0px 0px 40px;
+	text-align: left;
+}
+.confirm-act-wrap h3 img {
+	position: absolute;
+	left: 0px;
+	top: -10px;
+	width: 32px;
+	height: 32px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	/* IE10+ specific styles go here */
+	/*
+    .floating__input {
+        border-color:#015EAC80;
+        border-width: 1px;
+        border-style: solid;
+    }
+*/
+}
